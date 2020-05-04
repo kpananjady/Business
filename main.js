@@ -73,6 +73,16 @@
                     customClasses.push(splitTag.val);
                 }
 
+                //IFRAME: src
+                if( splitTag && splitTag.property == "IFRAME" ) {
+                    var iframeElement = document.createElement('iframe');
+                    iframeElement.src = splitTag.val;
+                    iframeElement.allowfullscreen = true;
+                    storyContainer.appendChild(iframeElement);
+                    showAfter(delay, iframeElement);
+                    delay += 200.0;
+                }
+
                 // CLEAR - removes all existing content.
                 // RESTART - clears everything and restarts the story from the beginning
                 else if( tag == "CLEAR" || tag == "RESTART" ) {
